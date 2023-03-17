@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Описание страницы">
+    <meta name="keywords" content="Ключевые слова страницы">
+    
+    <title>Список страниц</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .home {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100vh;
+          padding-top: 100px;
+        }
+        .home h1 {
+          font-size: 30px;
+        }
+        .home ul {
+          list-style-type: none;
+          text-align: center;
+        }
+        .home ul li {
+          margin-top: 20px;
+        }
+        .home ul a {
+          display: inline-block;
+          text-decoration: none;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 24px;
+          color: #1253B5;
+          transition: 0.4s;
+        }
+        .home ul a:hover {
+          transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <section class="home">
+        <h1>Список страниц</h1>
+
+        <ul>
+            <li>
+              <a href="goal.html" target="_blank">Цель заявки</a>
+            </li>
+            <li>
+              <a href="fine-photo.html" target="_blank">Данные о камере (фото штрафа)</a>
+            </li>
+            <li>
+              <a href="fine-photo--completed.html" target="_blank">Данные о камере (фото штрафа) (заполненный вариант)</a>
+            </li>
+            <li>
+              <a href="camera-data.html" target="_blank">Данные о камере</a>
+            </li>
+            <li>
+              <a href="contact-info.html" target="_blank">Контактная информация</a>
+            </li>
+            <li>
+              <a href="final.html" target="_blank">Спасибо за вашу заявку!</a>
+            </li>
+        </ul>
+    </section>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
