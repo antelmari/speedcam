@@ -1,0 +1,201 @@
+<div class="popup">
+    <div id="popup-example" class="zoom-anim-dialog mfp-hide popup__item popup-example">
+        <div class="popup__close">
+          <svg class="popup__close-icon"><use xlink:href="imgs/sprite.svg#close"></use></svg>
+        </div>
+        <div class="popup__img">
+            <img src="imgs/fine-photo/example.jpg" alt="example">
+        </div>
+    </div>
+
+    <div id="popup-map" class="zoom-anim-dialog mfp-hide popup__item popup-map">
+        <div class="popup__close">
+            <svg class="popup__close-icon"><use xlink:href="imgs/sprite.svg#close"></use></svg>
+        </div>
+        <div class="popup-search">
+            <div class="popup-search__block"></div>
+        </div>
+        <div class="popup__map">
+            <div id="map" class="map"></div>
+        </div>
+    </div>
+
+    <div id="popup-photos" class="zoom-anim-dialog mfp-hide popup__item popup-photos">
+        <div class="popup__close">
+          <svg class="popup__close-icon"><use xlink:href="imgs/sprite.svg#close"></use></svg>
+        </div>
+        <div class="popup__photos">
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+            <div class="popup__photo">
+                <img src="imgs/fine-photo/photo.jpg" alt="photo">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=cab3d95d-df53-4f33-90d5-4bfc71e40bdd&lang=ru_RU"></script>
+<script>
+    let address = 'Республика Татарстан, Буинский район, Р-241, 111-й километр';
+    let coordinates = [54.945834, 48.286889];
+    const inputMap = document.querySelector('.input__map');
+    ymaps.ready(init);
+
+    function init() {
+        const geolocation = ymaps.geolocation;
+        geolocation.get({
+            provider: 'yandex',
+            mapStateAutoApply: true
+        }).then(function (res) {
+            address = res.geoObjects.get(0).getAddressLine();
+            coordinates = res.geoObjects.get(0).geometry.getCoordinates();
+            placemark.geometry.setCoordinates(coordinates);
+            map.geoObjects.add(placemark);
+            map.balloon.open(coordinates,
+            `<h3 class="popup__address">Указанный адрес:<br>${address}</h3>
+            <button class="popup__btn" onclick="outputOfCoordinates()">Выбрать</button>`,
+            {
+                closeButton: false
+            });
+        });
+        const map = new ymaps.Map('map', {
+            center: coordinates,
+            zoom: 14,
+            controls: ['zoomControl', 'searchControl', 'geolocationControl']
+        });
+        const placemark = new ymaps.Placemark(coordinates, {
+            preset: 'islands#blueDotIcon'
+        });
+        map.options.set('yandexMapDisablePoiInteractivity', true);
+        placemark.options.set('hasBalloon', false);
+        map.geoObjects.add(placemark);
+        map.balloon.open(coordinates,
+        `<h3 class="popup__address">Указанный адрес:<br>${address}</h3>
+        <button class="popup__btn" onclick="outputOfCoordinates()">Выбрать</button>`,
+        {
+            closeButton: false
+        });
+
+        map.events.add('click', function (e) {
+            coordinates = e.get('coords');
+            ymaps.geocode(coordinates).then(function (res) {
+                address = res.geoObjects.get(0).getAddressLine();
+                placemark.geometry.setCoordinates(coordinates);
+                map.geoObjects.add(placemark);
+                map.balloon.open(coordinates,
+                `<h3 class="popup__address">Указанный адрес:<br>${address}</h3>
+                <button class="popup__btn" onclick="outputOfCoordinates()">Выбрать</button>`,
+                {
+                    closeButton: false
+                });
+            });
+        });
+
+        const searchControl = map.controls.get('searchControl');
+        searchControl.options.set('noPlacemark', 'true');
+        searchControl.events.add('submit', function () {
+            address = searchControl.getRequestString();
+            let myReverseGeocoder = ymaps.geocode(address);
+            myReverseGeocoder.then(function (res) {
+                coordinates = res.geoObjects.get(0).geometry.getCoordinates();
+                placemark.geometry.setCoordinates(coordinates);
+                map.geoObjects.add(placemark);
+                map.balloon.open(coordinates,
+                `<h3 class="popup__address">Указанный адрес:<br>${address}</h3>
+                <button class="popup__btn" onclick="outputOfCoordinates()">Выбрать</button>`,
+                {
+                    closeButton: false
+                });
+		    });
+        });
+
+        const geolocationControl = map.controls.get('geolocationControl');
+        geolocationControl.options.set('noPlacemark', 'true');
+        geolocationControl.events.add('click', function () {
+            geolocation.get({
+                provider: 'yandex',
+                mapStateAutoApply: true
+            }).then(function (res) {
+                address = res.geoObjects.get(0).getAddressLine();
+                coordinates = res.geoObjects.get(0).geometry.getCoordinates();
+                placemark.geometry.setCoordinates(coordinates);
+                map.geoObjects.add(placemark);
+                map.balloon.open(coordinates,
+                `<h3 class="popup__address">Указанный адрес:<br>${address}</h3>
+                <button class="popup__btn" onclick="outputOfCoordinates()">Выбрать</button>`,
+                {
+                    closeButton: false
+                });
+            });
+        });
+    }
+
+    function outputOfCoordinates() {
+        inputMap.value = `${coordinates[0]}, ${coordinates[1]}`;
+        closePopup();
+    }
+</script>

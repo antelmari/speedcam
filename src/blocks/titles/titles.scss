@@ -1,0 +1,68 @@
+.title {
+    &--error {
+        color: $red !important;
+    }
+    &--text-1 {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 155%;
+    }
+    &--text-2 {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 155%;
+    }
+    &--form {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 140%;
+    }
+    &--additional-text-1 {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+    }
+    &--additional-text-2 {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 140%;
+    }
+    &--form-text-1 {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 140%;
+    }
+    &--form-text-2 {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+    }
+    &--form-text-3 {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 140%;
+    }
+    &--additional-underline {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        text-decoration-line: underline;
+    }
+    &--additional-text-underline {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 140%;
+        text-decoration-line: underline;
+    }
+    &--form-text-underline {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+        text-decoration-line: underline;
+    }
+    &--text-mobile {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+    }
+}

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+// Технические блоки
+@import "../consts/consts.scss";
+
+// Общие блоки (их можно миксовать)
+@import "sidepanel/sidepanel.scss";
+@import "titles/titles.scss";
+@import "buttons/buttons.scss";
+@import "inputs/inputs.scss";
+@import "checkbox/checkbox.scss";
+@import "popup/popup.scss";
+@import "header-mobile/header-mobile.scss";
+
+// Блоки
+@import "goal/goal.scss";
+@import "fine-photo/fine-photo.scss";
+@import "camera-data/camera-data.scss";
+@import "contact-info/contact-info.scss";
+@import "final/final.scss";

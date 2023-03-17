@@ -1,0 +1,74 @@
+.checkbox {
+    position: relative;
+    display: flex;
+    &__input {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        opacity: 0;
+        &:checked + label::before {
+            background-color: $blue;
+            border: 1.5px solid $blue;
+        }
+        &:checked + label::after {
+            content: '';
+            position: absolute;
+            width: 9px;
+            height: 4px;
+            left: -16px;
+            top: 6px;
+            border-left: 1.5px solid $white;
+            border-bottom: 1.5px solid $white;
+            transform: rotate(-45deg);
+            @media (max-width: 1399px) {
+                top: 16px;
+            }
+        }
+        @media (max-width: 1399px) {
+            margin-top: 10px;
+        }
+    }
+    &__label {
+        position: absolute;
+        width: calc(100% - 20px);
+        height: 20px;
+        left: 20px;
+        z-index: 2;
+        cursor: pointer;
+        @media (max-width: 1399px) {
+            height: 40px;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            border: 1.5px solid $grey;
+            border-radius: 5px;
+            left: -20px;
+            transition: 0.4s;
+            @media (max-width: 1399px) {
+                margin-top: 10px;
+            }
+        }
+        &:hover {
+            &::before {
+                border: 1.5px solid $black;
+            }
+        }
+    }
+    &__text {
+        margin-left: 18px;
+        display: flex;
+        color: $black;
+        @media (max-width: 1399px) {
+            flex-direction: column;
+        }
+    }
+    &__link {
+        z-index: 3;
+        a {
+            color: $blue;
+        }
+    }
+}

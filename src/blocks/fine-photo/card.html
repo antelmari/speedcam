@@ -1,0 +1,14 @@
+<div class="fine-photo-card__box @@anotherClass">
+    <div class="fine-photo-card__plus">
+        <svg><use xlink:href="imgs/sprite.svg#plus"></use></svg>
+    </div>
+    <input type="file" class="fine-photo-card__file">
+    <div class="fine-photo-card__close">
+        <svg><use xlink:href="imgs/sprite.svg#close--mini"></use></svg>
+    </div>
+    @@if (img !== false) {
+        <div class="fine-photo-card__img">
+            <img src="@@img" alt="uploaded-photo">
+        </div>
+    }
+</div>

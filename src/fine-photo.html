@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include("blocks/head/head.html", { "title": "Фото штрафа" })
+
+    <body>
+        <section class="fine-photo">
+            @@include("blocks/sidepanel/sidepanel.html", {
+                "step-one": "sidepanel-content-steps__step sidepanel-content-steps__step--ready",
+                "step-two": "sidepanel-content-steps__step sidepanel-content-steps__step--active",
+                "step-three": "sidepanel-content-steps__step"
+            })
+
+            <div class="fine-photo-wrapper">
+                @@include("blocks/header-mobile/header-mobile.html", {
+                    "title": "Данные о камере",
+                    "step-one": "header-mobile-steps__step header-mobile-steps__step--ready",
+                    "step-two": "header-mobile-steps__step header-mobile-steps__step--active",
+                    "step-three": "header-mobile-steps__step"
+                })
+
+                <div class="fine-photo-tabs">
+                    <button class="tab tab--click">Фото штрафа</button>
+                    <button class="tab">Данные о камере</button>
+                </div>
+
+                <div class="fine-photo-content">
+                    <div class="fine-photo-cards">
+                        <div class="fine-photo-card">
+                            <div class="fine-photo-card__title fine-photo-card__title--first title--form">Прикрепить фото:</div>
+
+                            @@include("blocks/fine-photo/card.html", {
+                                "anotherClass": "fine-photo-card__box--download",
+                                "img": false
+                            })
+
+                            <div class="fine-photo-card__link title--form-text-underline">
+                                <a class="popup" href="#popup-example">Пример фото</a>
+                            </div>
+                        </div>
+                        <div class="fine-photo-card">
+                            <div class="fine-photo-card__title title--form">Комментарий:</div>
+                            <div class="textarea textarea">
+                                <textarea class="fine-photo-card__box comment" placeholder="Ввести текст" maxlength="250"></textarea>
+                                <svg class="textarea__icon"><use xlink:href="imgs/sprite.svg#textarea"></use></svg>
+                            </div>
+                            <div class="counter"><span class="count">0</span>/250</div>
+                            <div class="fine-photo-card__link">
+                                <input type="file" class="fine-photo-card__file">
+                                <div class="fine-photo-card__clip">
+                                    <svg><use xlink:href="imgs/sprite.svg#clip"></use></svg>
+                                </div>
+                                <div class="fine-photo-card__text title--form-text-underline">Прикрепите фото/видео</div>
+                            </div>
+                            <div class="fine-photo-card-files--hide">
+                                <div class="fine-photo-card-files__item">
+                                    <img src="imgs/fine-photo/file.jpg" alt="file">
+                                    <div class="fine-photo-card-files__close">x</div>
+                                </div>
+                                <div class="fine-photo-card-files__item">
+                                    <img src="imgs/fine-photo/file.jpg" alt="file">
+                                    <div class="fine-photo-card-files__close">x</div>
+                                </div>
+                                <div class="fine-photo-card-files__item--other">
+                                    <input type="file">
+                                    <div class="fine-photo-card-files__box">
+                                        <div class="fine-photo-card-files__plus">
+                                            <svg><use xlink:href="imgs/sprite.svg#plus"></use></svg>
+                                        </div>
+                                    </div>
+                                    <div class="fine-photo-card-files__counter">2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fine-photo__descr title--additional-text-1">Приложите фото или скриншот штрафа. На нем должны быть хорошо видны&nbsp;<br>данные о скорости, координатах, типе и направлении камеры.</div>
+                </div>
+
+                <div class="fine-photo-buttons">
+                    <button class="btn btn--back">Назад</button>
+                    <button class="btn btn--next" disabled>Далее</button>
+                </div>
+            </div>
+
+        </section>
+
+        @@include("blocks/popup/popup.html")
+    </body>
+</html>

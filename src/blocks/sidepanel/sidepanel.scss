@@ -1,0 +1,106 @@
+.sidepanel {
+    display: flex;
+    justify-content: flex-end;
+    background-color: $blue;
+    padding: 96px 43px 96px 0;
+    width: 35%;
+    @media (max-width: 991px) {
+        width: 320px;
+        padding: 96px 33px 96px 0;
+    }
+    @media (max-width: 767px) {
+        display: none;
+    }
+    &-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__logo {
+            width: 120px;
+            height: 32px;
+            svg {
+                width: 120px;
+                height: 32px;
+                stroke: none;
+                fill: $white;
+            }
+        }
+        &-steps {
+            &__step {
+                position: relative;
+                display: flex;
+                align-items: center;
+                opacity: 0.3;
+                margin-top: 65px;
+                &--active {
+                    opacity: 1;
+                    &::before {
+                        opacity: 0.3;
+                    }
+                }
+                &--first {
+                    margin-top: 0;
+                    &::before {
+                        display: none;
+                    }
+                }
+                &--ready {
+                    .sidepanel-content-steps__number {
+                        display: none;
+                    }
+                    .sidepanel-content-steps__ready {
+                        display: flex;
+                    }
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: 70px;
+                    width: 1px;
+                    background-color: $white;
+                    top: -68px;
+                    left: 11px;
+                }
+            }
+            &__number {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 23px;
+                height: 23px;
+                border-radius: 100%;
+                background-color: $white;
+                color: $blue;
+            }
+            &__ready {
+                position: relative;
+                display: none;
+                width: 23px;
+                height: 23px;
+                border-radius: 100%;
+                background-color: $white;
+                svg {
+                    position: absolute;
+                    width: 11px;
+                    height: 9px;
+                    stroke: $blue;
+                    fill: none;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateY(-50%) translateX(-50%);
+                }
+            }
+            &__title {
+                color: $white;
+                margin-left: 19px;
+            }
+        }
+        &__link {
+            a {
+                color: $white;
+                text-decoration-line: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include("blocks/head/head.html", { "title": "Цель заявки" })
+
+    <body>
+        <section class="goal">
+            @@include("blocks/sidepanel/sidepanel.html", {
+                "step-one": "sidepanel-content-steps__step sidepanel-content-steps__step--active",
+                "step-two": "sidepanel-content-steps__step",
+                "step-three": "sidepanel-content-steps__step"
+            })
+
+            <div class="goal-wrapper">
+                @@include("blocks/header-mobile/header-mobile.html", {
+                    "title": "Цель заявки",
+                    "step-one": "header-mobile-steps__step header-mobile-steps__step--active",
+                    "step-two": "header-mobile-steps__step",
+                    "step-three": "header-mobile-steps__step"
+                })
+
+                <div class="goal-content">
+                    <div class="goal-cards">
+                        <div class="goal-cards-input">
+                            <input id="goal-add" type="radio" class="goal__input" name="input--goal">
+                            <label for="goal-add" class="goal__label"></label>
+                            <div class="goal__card title--text-2">Добавить камеру</div>
+                        </div>
+                        <div class="goal-cards-input">
+                            <input id="goal-edit" type="radio" class="goal__input" name="input--goal">
+                            <label for="goal-edit" class="goal__label"></label>
+                            <div class="goal__card title--text-2">Редактировать базу</div>
+                        </div>
+                        <div class="goal-cards-input">
+                            <input id="goal-delete" type="radio" class="goal__input" name="input--goal">
+                            <label for="goal-delete" class="goal__label"></label>
+                            <div class="goal__card title--text-2">Удалить камеру</div>
+                        </div>
+                    </div>
+                    <div class="goal__descr title--additional-text-1">Убедитесь, что у Вас установлена актуальная база камер.</div>
+                </div>
+                <button class="goal__btn btn btn--next">Далее</button>
+            </div>
+        </section>
+    </body>
+</html>
